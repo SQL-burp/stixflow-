@@ -1,0 +1,15 @@
+# Sample OT/IT boundary firewall + DNS log (fictional). Format: ts action src dst dport proto note
+2026-11-20T06:58:12Z ALLOW 10.40.1.15 10.40.2.21 502 tcp modbus HMI-01 -> PRESS-LINE-3-PLC read holding registers
+2026-11-20T07:01:44Z ALLOW 10.40.1.15 10.40.2.22 44818 tcp enip HMI-01 -> VISION-CELL-2
+2026-11-20T07:03:09Z DENY 192.0.2.77 172.16.0.5 443 tcp vpn-gw auth failure user=vendor_svc (x37)
+2026-11-20T07:03:51Z ALLOW 192.0.2.77 172.16.0.5 443 tcp vpn-gw auth success user=vendor_svc
+2026-11-20T07:05:30Z DNS 10.40.9.8 query=update-plcsync.example type=A answer=203.0.113.45
+2026-11-20T07:05:31Z ALLOW 10.40.9.8 203.0.113.45 443 tcp ENG-WS-04 outbound tls sni=update-plcsync.example
+2026-11-20T07:06:02Z ALLOW 10.40.9.8 203.0.113.45 80 tcp GET http://update-plcsync.example/fw/patch.bin
+2026-11-20T07:09:40Z ALERT 10.40.9.8 - - - edr file_created C:\ProgramData\plcsync\svc.exe sha256=7ed11a99d06a63e9b27f4321fee1983b21f2a654a94defd6da089c91c60faf0f
+2026-11-20T07:15:00Z ALLOW 198.51.100.17 172.16.0.5 502 tcp scan modbus probe from internet (GRIDSWEEP?)
+2026-11-20T07:22:18Z ALLOW 10.40.9.8 10.40.2.21 502 tcp modbus ENG-WS-04 -> PRESS-LINE-3-PLC write multiple registers
+2026-11-20T08:10:05Z DNS 10.20.3.44 query=invoice-portal.example type=A answer=203.0.113.99
+2026-11-20T08:11:47Z MAIL from=ap-billing@invoice-portal[.]example to=purchasing@plant.local subject="Overdue invoice"
+2026-11-20T09:00:00Z ALLOW 10.20.3.44 192.0.2.200 443 tcp old sinkholed C2 (indicator revoked - should NOT alert)
+2026-11-20T09:30:00Z ALLOW 10.40.1.15 10.40.2.21 502 tcp modbus HMI-01 -> PRESS-LINE-3-PLC normal polling

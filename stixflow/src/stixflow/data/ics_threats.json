@@ -1,0 +1,808 @@
+{
+  "type": "bundle",
+  "id": "bundle--8ac8ff33-530d-52c2-af92-f756684d7aac",
+  "x_stixflow_title": "ICS Threats - Manufacturing",
+  "x_stixflow_description": "Fictional ICS/OT threat activity against stamping and press-line environments.",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "name": "stixflow Sample Feed",
+      "identity_class": "organization",
+      "description": "Fictional producer used for stixflow demos and tests."
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bf5c5522-2ac3-531b-ac8d-ae2387bfdfda",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Discrete Manufacturing (Metal Stamping)",
+      "identity_class": "class",
+      "sectors": [
+        "manufacturing"
+      ]
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--4694da18-bdd4-5651-b0ab-dd7ff96900f5",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "COPPER LATHE Operators",
+      "threat_actor_types": [
+        "crime-syndicate"
+      ],
+      "sophistication": "advanced",
+      "resource_level": "organization",
+      "primary_motivation": "personal-gain",
+      "description": "Fictional group extorting manufacturers by threatening production quality."
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "COPPER LATHE",
+      "aliases": [
+        "CL-01"
+      ],
+      "first_seen": "2026-06-01T00:00:00Z",
+      "goals": [
+        "Disrupt press-line output",
+        "Silently degrade part quality to support extortion"
+      ],
+      "description": "Fictional intrusion set targeting stamping plants via exposed remote-access gear."
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--15bc782d-7080-537e-8e32-8ca29f10c469",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Operation QUIET TONNAGE",
+      "first_seen": "2026-08-15T00:00:00Z",
+      "objective": "Gain persistent access to press-line PLCs and HMI engineering workstations."
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "PRESSBREAK",
+      "is_family": true,
+      "malware_types": [
+        "backdoor",
+        "remote-access-trojan"
+      ],
+      "capabilities": [
+        "communicates-with-c2",
+        "evades-av"
+      ],
+      "description": "Fictional ICS framework. Modules push altered servo-press tonnage/stroke parameters over Modbus/TCP and swap machine-vision inspection recipes so out-of-tolerance parts pass inspection."
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--a3e34861-16e9-591a-ab78-1efabf691ae3",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "GRIDSWEEP",
+      "tool_types": [
+        "network-capture"
+      ],
+      "description": "Fictional scanner enumerating Modbus/TCP (502) and EtherNet/IP (44818) devices."
+    },
+    {
+      "type": "vulnerability",
+      "spec_version": "2.1",
+      "id": "vulnerability--b6287395-b205-5acd-b5ee-ee3d46b9fc82",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "SAMPLE-2026-0001 HMI web auth bypass",
+      "description": "Fictional auth bypass in an HMI web server, used for initial access."
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--87558d0b-ce45-509a-bcfa-18df22ff2883",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Internet Accessible Device",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "T0883",
+          "url": "https://attack.mitre.org/techniques/T0883/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4a211c23-0d8b-5d8b-805a-dc192db9ebd6",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Remote Services",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "T0886",
+          "url": "https://attack.mitre.org/techniques/T0886/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--96d67eed-c6da-5284-af02-442238f318b5",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Remote System Discovery",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "T0846",
+          "url": "https://attack.mitre.org/techniques/T0846/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--fbf73378-ee3f-5852-8efc-04014bd37974",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Program Download",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "T0843",
+          "url": "https://attack.mitre.org/techniques/T0843/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8985f783-2210-554f-b4bb-6ebb3d892abc",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Modify Parameter",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "T0836",
+          "url": "https://attack.mitre.org/techniques/T0836/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--836f43ba-59d3-5eba-b1e0-1f54c756594d",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Unauthorized Command Message",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "T0855",
+          "url": "https://attack.mitre.org/techniques/T0855/"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--670a8609-bdca-5fe4-9580-90d48808c193",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Network Segmentation",
+      "description": "Keep press-line PLCs in a cell/area zone; no direct routes from enterprise or internet.",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "M0930",
+          "url": "https://attack.mitre.org/mitigations/M0930/"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--390e8dd5-1db8-5258-b2ad-5a26b674a3b6",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Filter Network Traffic",
+      "description": "Allow-list Modbus/EtherNet/IP sources at the cell firewall; block writes from non-HMI hosts.",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "M0937",
+          "url": "https://attack.mitre.org/mitigations/M0937/"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--69b92cb1-8e44-5884-8472-0e3681aa6629",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Multi-factor Authentication",
+      "description": "Require MFA on vendor VPN and remote desktop into the OT DMZ.",
+      "external_references": [
+        {
+          "source_name": "mitre-ics-attack",
+          "external_id": "M0932",
+          "url": "https://attack.mitre.org/mitigations/M0932/"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e0b5cf93-9c04-5518-aa69-ccf11405a6b8",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "PRESSBREAK C2 server",
+      "description": "Primary C2 observed beaconing over TCP/443.",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '203.0.113.45']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z",
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-ics-attack",
+          "phase_name": "command-and-control"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8247cebf-0133-5a67-ab66-93c53c85b934",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "PRESSBREAK backup C2 pair",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '203.0.113.46' OR ipv4-addr:value = '203.0.113.47']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c8631404-e3ce-508c-a60e-e774fa6254a3",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "PRESSBREAK C2 domain",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'update-plcsync.example']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c733161d-218c-56c2-96e1-6d6b1298d346",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "PRESSBREAK payload URL",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'http://update-plcsync.example/fw/patch.bin']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e6656b42-038c-53b2-89b8-ebe9c415c9e5",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "PRESSBREAK loader (SHA-256)",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = '7ed11a99d06a63e9b27f4321fee1983b21f2a654a94defd6da089c91c60faf0f']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a129dd46-209a-5eed-8ee0-935443af2e41",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "COPPER LATHE staging range",
+      "description": "VPS range used to host GRIDSWEEP scans.",
+      "indicator_types": [
+        "anomalous-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.51.100.0/24']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2a71e887-3209-5737-8086-aaf4f5fce7b2",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Vendor VPN brute-force source",
+      "description": "",
+      "indicator_types": [
+        "anomalous-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '192.0.2.77']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--968f1f4c-f998-529c-8b90-38d86486eae8",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-10-02T09:30:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Retired sinkholed C2",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '192.0.2.200']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z",
+      "revoked": true
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d3798811-e716-594e-886e-c92619aa03e7",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "target_ref": "threat-actor--4694da18-bdd4-5651-b0ab-dd7ff96900f5"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b92d8e6f-b9a3-5cb9-b3a9-f7f465346486",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--15bc782d-7080-537e-8e32-8ca29f10c469",
+      "target_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--84cdb575-946c-5504-a467-b61ba7fb4bee",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "target_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--48f38408-3d8f-54ce-a701-52fdf75d5cb7",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "target_ref": "tool--a3e34861-16e9-591a-ab78-1efabf691ae3"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8901a8ee-1d7d-5437-962f-a2e18e4f2284",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "target_ref": "identity--bf5c5522-2ac3-531b-ac8d-ae2387bfdfda"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--48a84f7a-033c-5329-8ece-92c980d8fb4d",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--15bc782d-7080-537e-8e32-8ca29f10c469",
+      "target_ref": "vulnerability--b6287395-b205-5acd-b5ee-ee3d46b9fc82"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3e9c8729-8af2-5c01-a2fe-191887947f8b",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc",
+      "target_ref": "identity--bf5c5522-2ac3-531b-ac8d-ae2387bfdfda"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25921d27-776a-5655-b8fa-e7f7f95c1e72",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "target_ref": "attack-pattern--87558d0b-ce45-509a-bcfa-18df22ff2883"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4c7597f0-5807-5866-a32e-7070d68ef1f4",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--d35e3799-9489-5b60-9190-6a1d994a0906",
+      "target_ref": "attack-pattern--4a211c23-0d8b-5d8b-805a-dc192db9ebd6"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1a36c854-8871-5504-92a3-4b0a984a8dc8",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "tool--a3e34861-16e9-591a-ab78-1efabf691ae3",
+      "target_ref": "attack-pattern--96d67eed-c6da-5284-af02-442238f318b5"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b90a832-3871-5e30-a5e1-da0ef08e07fd",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc",
+      "target_ref": "attack-pattern--fbf73378-ee3f-5852-8efc-04014bd37974"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5f1d7eb9-68aa-536c-97e1-92ce06d93c9a",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc",
+      "target_ref": "attack-pattern--8985f783-2210-554f-b4bb-6ebb3d892abc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5911c3bf-6b97-56b3-995d-e4ae98713062",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc",
+      "target_ref": "attack-pattern--836f43ba-59d3-5eba-b1e0-1f54c756594d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--39e64e74-b7ce-54b8-aacb-7aa95a36a437",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "mitigates",
+      "source_ref": "course-of-action--670a8609-bdca-5fe4-9580-90d48808c193",
+      "target_ref": "attack-pattern--87558d0b-ce45-509a-bcfa-18df22ff2883"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0287fbf6-5b29-5958-933e-0bfae422fb94",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "mitigates",
+      "source_ref": "course-of-action--69b92cb1-8e44-5884-8472-0e3681aa6629",
+      "target_ref": "attack-pattern--4a211c23-0d8b-5d8b-805a-dc192db9ebd6"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--63ce25fe-4b92-5ae8-9117-091a17f98a44",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "mitigates",
+      "source_ref": "course-of-action--390e8dd5-1db8-5258-b2ad-5a26b674a3b6",
+      "target_ref": "attack-pattern--836f43ba-59d3-5eba-b1e0-1f54c756594d"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--67c1d145-98f6-55bb-80a5-d02a8f561833",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "mitigates",
+      "source_ref": "course-of-action--390e8dd5-1db8-5258-b2ad-5a26b674a3b6",
+      "target_ref": "attack-pattern--8985f783-2210-554f-b4bb-6ebb3d892abc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bef53229-8a36-551f-9428-bd40a4cd69ae",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e0b5cf93-9c04-5518-aa69-ccf11405a6b8",
+      "target_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9b4eff46-506b-571f-8fd5-5bc1227852b4",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8247cebf-0133-5a67-ab66-93c53c85b934",
+      "target_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79930143-236a-556d-95cf-22002931e8c8",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c8631404-e3ce-508c-a60e-e774fa6254a3",
+      "target_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2b28c6da-640a-5d6d-a71a-b8a01f0cf8a5",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c733161d-218c-56c2-96e1-6d6b1298d346",
+      "target_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aaa5545e-8296-5bcd-b236-1b5a7c9264bd",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e6656b42-038c-53b2-89b8-ebe9c415c9e5",
+      "target_ref": "malware--cf58d517-daae-53f5-80e5-80e12e9088dc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3ac5871d-ac60-5d20-84e3-732a2d134e1b",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a129dd46-209a-5eed-8ee0-935443af2e41",
+      "target_ref": "tool--a3e34861-16e9-591a-ab78-1efabf691ae3"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dbb83b3b-fc49-58f6-b7ad-b18d7ecb9a2c",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2a71e887-3209-5737-8086-aaf4f5fce7b2",
+      "target_ref": "campaign--15bc782d-7080-537e-8e32-8ca29f10c469"
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "type": "bundle",
+  "id": "bundle--7ed19d9e-ffdb-5def-86db-d2ef6f10e8f9",
+  "x_stixflow_title": "IT Commodity Threats",
+  "x_stixflow_description": "Fictional ransomware activity that commonly crosses from IT into OT networks.",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "name": "stixflow Sample Feed",
+      "identity_class": "organization",
+      "description": "Fictional producer used for stixflow demos and tests."
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "LOCKSTEP",
+      "is_family": true,
+      "malware_types": [
+        "ransomware"
+      ],
+      "description": "Fictional commodity ransomware that encrypts MES/historian servers."
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--247dbe93-0967-5278-b044-c9e70b81fd67",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Phishing",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566",
+          "url": "https://attack.mitre.org/techniques/T1566/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a15c6a11-8876-597d-a48e-41ca97c70434",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "Data Encrypted for Impact",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1486",
+          "url": "https://attack.mitre.org/techniques/T1486/"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--46840cc9-974b-553e-8fa4-bebe89c98139",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "LOCKSTEP phishing domain",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'invoice-portal.example']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--807cd777-242d-5323-96d7-6e22c1a3578e",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "LOCKSTEP encryptor (SHA-256)",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = 'ed40ddf37c04b04a418626fc7dc7cd78dcedbc3f4bed105b2025191f4f3eaf23']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--08dc6a3f-b802-5de6-a8b9-3ecc85252a83",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "LOCKSTEP exfil server",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.51.100.200']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--169988b0-6397-5e70-b281-0c999f5cb41f",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "name": "LOCKSTEP sender",
+      "description": "",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[email-addr:value = 'ap-billing@invoice-portal.example']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-14T13:00:00.000Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2423c104-0656-527f-85e6-85229c3956a9",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--46840cc9-974b-553e-8fa4-bebe89c98139",
+      "target_ref": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ddb1478f-a9ff-5cec-80de-2188418acd83",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--807cd777-242d-5323-96d7-6e22c1a3578e",
+      "target_ref": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--72b15dc3-d9bd-56eb-a5b8-d27c2e3609b1",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--08dc6a3f-b802-5de6-a8b9-3ecc85252a83",
+      "target_ref": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7125c4ec-bf71-58bb-b207-cc3e06479f3b",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--169988b0-6397-5e70-b281-0c999f5cb41f",
+      "target_ref": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6c22405c-0ce3-5e65-adc9-59146ecd5165",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a",
+      "target_ref": "attack-pattern--247dbe93-0967-5278-b044-c9e70b81fd67"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d3964669-bc9b-594f-afdc-f1e1933229af",
+      "created": "2026-09-14T13:00:00.000Z",
+      "modified": "2026-09-14T13:00:00.000Z",
+      "created_by_ref": "identity--44f6f036-e5f5-5d89-8fd2-c2e2c55866dc",
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "malware--c44b92ff-a752-513b-bf36-7319a78fb06a",
+      "target_ref": "attack-pattern--a15c6a11-8876-597d-a48e-41ca97c70434"
+    }
+  ]
+}
